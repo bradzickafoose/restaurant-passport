@@ -42,7 +42,7 @@ _Delpoyed URL:_ [https://build-restaurant-passport.herokuapp.com](https://build-
 
 | Method | Endpoint          | Token Required | Description                                                                                                  |
 | ------ | ----------------- | -------------- | ------------------------------------------------------------------------------------------------------------ |
-| POST   | `/users/register` | no             | Registers a new user <br> Required: username, password, and department. <br>Returns id, username, and email. |
+| POST   | `/users/register` | no             | Registers a new user <br> Required: username, password, and email. <br>Returns id, username, and email. |
 | POST   | `/users/login`    | no             | Required: username and password<br> Signs in user and returns a token and userId      |
 
 ### Cities Routes
