@@ -22,4 +22,6 @@ server.use('/cities', citiesRouter)
 server.use('/manyToMany', manyToManyRouter)
 /* server.use('/manyToMany', manyToManyRouter) */
 
+server.get('/', (req, res) => res.status(200).json({ message: 'API is online' }));
+
 module.exports = server;
