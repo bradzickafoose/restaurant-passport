@@ -8,7 +8,8 @@ module.exports = {
     getCityById,
     getRestaurants,
     getRestaurantById,
-    addRestaurant
+    addRestaurant,
+    rateRestaurant
 }
 
 function addCity(city) {
@@ -42,4 +43,12 @@ function getRestaurantById(id) {
     return db('restaurants')
         .first()
         .where('restaurants.id', id)
+}
+
+async function rateRestaurant(id, rating) {
+    await db('restaurants')
+        .update({ rating })
+        .where('restaurants.id', id);
+    
+    return getRestaurantById(id);
 }

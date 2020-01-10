@@ -63,4 +63,25 @@ router.get("/restaurants/:id", authenticate, (req, res) => {
     });
 });
 
+router.put("/restaurants/:id", authenticate, (req, res) => {
+  const id = req.params.id;
+  const rating = req.body.rating; 
+
+  if (isNaN(parseInt(rating))) {
+    return res.status(400).json({ message: 'not a valid rating'});
+  }
+
+  if (rating < 1 || rating > 5) { 
+    return res.status(400).json({ message: 'rating must be between 1 and 5' });
+  }
+
+  Cities.rateRestaurant(id, rating)
+    .then(restaurant => {
+      res.status(200).json(restaurant);
+    })
+    .catch(error => {
+      res.status(500).json({ error });
+    });
+})
+
 module.exports = router;
