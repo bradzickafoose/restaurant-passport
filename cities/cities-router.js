@@ -13,6 +13,14 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
+router.get("/:id", authenticate, (req, res) => {
+  const id = req.params.id;
+
+  Cities.getCityById(id)
+    .then(city => res.status(200).json(city))
+    .catch(error => res.status(500).json({ error }))
+})
+
 router.post("/", (req, res) => {
   // posts to cities
   Cities.addCity(req.body)
