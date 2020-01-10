@@ -13,6 +13,14 @@ router.get("/", authenticate, (req, res) => {
     });
 });
 
+router.get("/:id", authenticate, (req, res) => {
+  const id = req.params.id;
+
+  Cities.getCityById(id)
+    .then(city => res.status(200).json(city))
+    .catch(error => res.status(500).json({ error }))
+})
+
 router.post("/", (req, res) => {
   // posts to cities
   Cities.addCity(req.body)
@@ -83,5 +91,17 @@ router.put("/restaurants/:id", authenticate, (req, res) => {
       res.status(500).json({ error });
     });
 })
+
+router.delete("/restaurants/:id", authenticate, (req, res) => {
+  const id = req.params.id;
+
+  Cities.getRestaurantById(id)
+    .delete()
+    .then(() => {
+      res.status(200).json({ message: 'deleted restaurant successfully' })
+    })
+    .catch(error => res.status(500).json({ message: error.message }))
+})
+
 
 module.exports = router;
