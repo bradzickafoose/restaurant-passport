@@ -34,7 +34,7 @@ function getCityById(id) {
 function getRestaurants(id) {
     return db('restaurants')
         .join('cities', 'cities.id', 'restaurants.city_id')
-        .select('restaurants.id as restID', 'restaurants.name as restName')
+        .select('restaurants.id as restID', 'restaurants.name as restName', 'restaurants.*')
         .where('restaurants.city_id', id)
 }
 

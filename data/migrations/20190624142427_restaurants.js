@@ -7,8 +7,6 @@ exports.up = function(knex, Promise) {
       .notNullable()
       .unique();
 
-    restaurants.string("city", 300).notNullable();
-
     restaurants.string("address", 300).notNullable();
 
     restaurants.string("description", 500).notNullable();
@@ -20,6 +18,8 @@ exports.up = function(knex, Promise) {
       .inTable("cities")
       .onDelete("RESTRICT")
       .onUpdate("CASCADE");
+
+		restaurants.integer("rating")
   });
 };
 
