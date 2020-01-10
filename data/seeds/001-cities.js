@@ -28,10 +28,6 @@ exports.seed = function(knex, Promise) {
           {
             "id": 6,
             "name": "Boston"
-          },
-          {
-            "id": 7,
-            "name": ""
           }
         ]
       );
